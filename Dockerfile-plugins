@@ -1,0 +1,68 @@
+FROM egaillardon/jmeter:4.0.0-1.0.0
+LABEL maintainer="emmanuel.gaillardon@orange.fr"
+ENV CMDRUNNER_VERSION 2.0
+RUN cd /tmp/ \
+ && curl --location --silent --show-error --output ${JMETER_HOME}/lib/ext/jmeter-plugins-manager.jar https://jmeter-plugins.org/get/ \
+ && curl --location --silent --show-error --output ${JMETER_HOME}/lib/cmdrunner-${CMDRUNNER_VERSION}.jar http://search.maven.org/remotecontent?filepath=kg/apc/cmdrunner/${CMDRUNNER_VERSION}/cmdrunner-${CMDRUNNER_VERSION}.jar \
+ && java -cp ${JMETER_HOME}/lib/ext/jmeter-plugins-manager.jar org.jmeterplugins.repository.PluginManagerCMDInstaller \
+ && PluginsManagerCMD.sh install \
+blazemeter-debugger=0.6,\
+bzm-hls=1.2,\
+bzm-http2=1.1,\
+bzm-parallel=0.4,\
+bzm-random-csv=0.6,\
+custom-soap=1.3,\
+jmeter.backendlistener.elasticsearch=2.2.4,\
+jpgc-autostop=0.1,\
+jpgc-casutg=2.5,\
+jpgc-cmd=2.1,\
+jpgc-csl=0.1,\
+jpgc-csvars=0.1,\
+jpgc-dbmon=0.1,\
+jpgc-directory-listing=0.2,\
+jpgc-dummy=0.2,\
+jpgc-ffw=2.0,\
+jpgc-fifo=0.2,\
+jpgc-filterresults=2.1,\
+jpgc-functions=2.0,\
+jpgc-ggl=2.0,\
+jpgc-graphs-additional=2.0,\
+jpgc-graphs-basic=2.0,\
+jpgc-graphs-composite=2.0,\
+jpgc-graphs-dist=2.0,\
+jpgc-graphs-vs=2.0,\
+jpgc-hadoop=2.0,\
+jpgc-httpraw=0.1,\
+jpgc-jms=0.2,\
+jpgc-jmxmon=0.2,\
+jpgc-json=2.6,\
+jpgc-lockfile=0.1,\
+jpgc-mergeresults=2.1,\
+jpgc-oauth=0.1,\
+jpgc-pde=0.1,\
+jpgc-perfmon=2.1,\
+jpgc-plancheck=2.2,\
+jpgc-prmctl=0.3,\
+jpgc-redis=0.2,\
+jpgc-rotating-listener=0.2,\
+jpgc-sense=3.4,\
+jpgc-standard=2.0,\
+jpgc-sts=2.3,\
+jpgc-synthesis=2.1,\
+jpgc-tst=2.3,\
+jpgc-udp=0.3,\
+jpgc-webdriver=2.3,\
+jpgc-wsc=0.3,\
+jpgc-xml=0.1,\
+jpgc-xmpp=1.5.1,\
+kafkameter=0.2.0,\
+mqtt-sampler=0.0.1-SNAPSHOT,\
+netflix-cassandra=0.2-SNAPSHOT,\
+ssh-sampler=1.1.1-SNAPSHOT,\
+tilln-sshmon=1.0,\
+tilln-wssecurity=1.5,\
+websocket-sampler=1.0.2-SNAPSHOT,\
+websocket-samplers=1.1 \
+ && jmeter --version \
+ && rm -fr /tmp/*  \
+ && if [ `ls -l /opt/apache-jmeter-*/lib/ext/ | wc -l` != 73 ]; then exit -1; fi
