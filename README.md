@@ -1,7 +1,6 @@
-# Docker images for **Apache JMeter**
+# Docker image for **Apache JMeter**
 
 [![Apache JMeter Logo](https://jmeter.apache.org/images/logo.svg)](https://jmeter.apache.org)
-[![JMeter PLugins Logo](https://jmeter-plugins.org/img/site/logo.png)](https://jmeter-plugins.org)
 
 [![Docker Stars](https://img.shields.io/docker/stars/egaillardon/jmeter.svg?style=plastic)](https://hub.docker.com/r/egaillardon/jmeter/)
 [![Docker Pulls](https://img.shields.io/docker/pulls/egaillardon/jmeter.svg?style=plastic)](https://hub.docker.com/r/egaillardon/jmeter/)
@@ -12,31 +11,19 @@
 
 * **Apache JMeter** : an application designed to load test functional behavior and measure performance - https://jmeter.apache.org
 
-* **JMeter Plugins** : an independent set of plugins - https://jmeter-plugins.org
-
 * The **version number** is composed of two version numbers
   * the first is the version of the Apache JMeter embedded in this docker image
   * the second is for this docker image itself
 
 ## Apache JMeter
 
-### Image name
-
 * `egaillardon/jmeter`
+
+*** For a Docker image including JMeter plugins, see https://hub.docker.com/r/egaillardon/jmeter-plugins/ ***
 
 ### Supported tags and respective `Dockerfile` links
 
 * `latest`, `4.0.0-1.0.0` [(Dockerfile-standalone)](https://github.com/egaillardon/jmeter/blob/4.0.0-1.0.0/Dockerfile-standalone)
-
-## Apache JMeter including all plugins available with the JMeter Plugins Manager
-
-### Image name
-
-* `egaillardon/jmeter-plugins`
-
-### Supported tags and respective `Dockerfile` links
-
-* `latest`, `4.0.0-1.0.0` [(Dockerfile-plugins)](https://github.com/egaillardon/jmeter/blob/4.0.0-1.0.0/Dockerfile-plugins)
 
 ## Quick reference
 
@@ -45,17 +32,16 @@
   * [Apache JMeter Getting Started](http://jmeter.apache.org/usermanual/get-started.html)
   * [Apache JMeter Remote Testing](http://jmeter.apache.org/usermanual/remote-test.html)
   * [Apache JMeter Distributed Testing Step-by-step](http://jmeter.apache.org/usermanual/jmeter_distributed_testing_step_by_step.html)
-  * [JMeter Plugins](https://jmeter-plugins.org)
 * Where to get more information about Docker
   * [Docker](https://www.docker.com)
   * [Get started with Docker](https://docs.docker.com/get-started/)
   * [Docker run reference](https://docs.docker.com/engine/reference/run/)
 
-## How to use these images
+## How to use this image
 
 ### Working directory
 
-The working directory defined in Dockerfiles is `/jmeter`
+The working directory defined in Dockerfile is `/jmeter`
 
 ### Environment variables
 
@@ -149,10 +135,6 @@ docker run --detach --rm --volume `pwd`:/jmeter egaillardon/jmeter -Jserver.rmi.
 
 ```
 docker run --interactive --tty --rm egaillardon/jmeter
-```
-or
-```
-docker run --interactive --tty --rm egaillardon/jmeter-plugins
 ```
 
 #### Result
@@ -253,7 +235,7 @@ docker run --detach --rm --volume `pwd`:/jmeter egaillardon/jmeter -Jserver.rmi.
 ```
 
 #### Sending the content of the jmeter log file to console
-Set the `jmeterlogconf` option in order to use another [log4j2.xml file (see the example file provided)](log4j2.xml)
+Set the `jmeterlogconf` option in order to use another [log4j2.xml file (see the example file provided)](https://github.com/egaillardon/jmeter/blob/4.0.0-1.0.0/log4j2.xml)
 
 ```
 docker run --detach --publish 1099:1099 --volume `pwd`:/jmeter --rm egaillardon/jmeter -Jserver.rmi.ssl.disable=true -Djava.rmi.server.hostname=192.168.1.15 -Jserver.rmi.localport=1099 -Dserver_port=1099 --server --jmeterlogconf log4j2.xml
