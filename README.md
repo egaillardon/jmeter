@@ -23,11 +23,12 @@
 
 ### Supported tags and respective `Dockerfile` links
 
-* `latest`, `4.0.0-1.0.0` [(Dockerfile-standalone)](https://github.com/egaillardon/jmeter/blob/4.0.0-1.0.0/Dockerfile-standalone)
+* `latest`, `4.0.0-1.1.0` [(Dockerfile-standalone)](https://github.com/egaillardon/jmeter/blob/4.0.0-1.1.0/Dockerfile-standalone)
+* `4.0.0-1.0.0` [(Dockerfile-standalone)](https://github.com/egaillardon/jmeter/blob/4.0.0-1.0.0/Dockerfile-standalone)
 
 ## Quick reference
 
-* Where to get more information about Apache JMeter and JMeter Plugins
+* Where to get more information about Apache JMeter
   * [Apache JMeter](http://jmeter.apache.org)
   * [Apache JMeter Getting Started](http://jmeter.apache.org/usermanual/get-started.html)
   * [Apache JMeter Remote Testing](http://jmeter.apache.org/usermanual/remote-test.html)
@@ -41,7 +42,11 @@
 
 ### Working directory
 
-The working directory defined in Dockerfile is `/jmeter`
+The working directory defined in the Dockerfile is `/jmeter`.
+
+### Default User
+
+The default user is `jmeter`.
 
 ### Environment variables
 
@@ -235,7 +240,7 @@ docker run --detach --rm --volume `pwd`:/jmeter egaillardon/jmeter -Jserver.rmi.
 ```
 
 #### Sending the content of the jmeter log file to console
-Set the `jmeterlogconf` option in order to use another [log4j2.xml file (see the example file provided)](https://github.com/egaillardon/jmeter/blob/4.0.0-1.0.0/log4j2.xml)
+Set the `jmeterlogconf` option in order to use another [log4j2.xml file (see the example file provided)](https://github.com/egaillardon/jmeter/blob/master/log4j2.xml)
 
 ```
 docker run --detach --publish 1099:1099 --volume `pwd`:/jmeter --rm egaillardon/jmeter -Jserver.rmi.ssl.disable=true -Djava.rmi.server.hostname=192.168.1.15 -Jserver.rmi.localport=1099 -Dserver_port=1099 --server --jmeterlogconf log4j2.xml
@@ -277,4 +282,5 @@ docker run --detach --publish 1099:1099 --env TZ=Europe/Paris --rm egaillardon/j
 ```
 
 ## Changelog
-None by now :)
+* 4.0.0-1.1.0 :
+   * Set the user `jmeter` when running the image

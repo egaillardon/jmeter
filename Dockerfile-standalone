@@ -17,7 +17,12 @@ RUN cd /tmp/ \
  && sed -i '/RUN_IN_DOCKER/s/^# //g' ${JMETER_BIN}/jmeter \
  && sed -i '/PrintGCDetails/s/^# /: "${/g' ${JMETER_BIN}/jmeter && sed -i '/PrintGCDetails/s/$/}"/g' ${JMETER_BIN}/jmeter \
  && jmeter --version \
- && rm -fr /tmp/*
+ && rm -fr /tmp/*  \
+ && groupadd --system jmeter  \
+ && useradd --no-log-init --system --gid jmeter jmeter \
+ && mkdir /jmeter  \
+ && chown jmeter:jmeter /jmeter
+USER jmeter
 WORKDIR /jmeter
 ENTRYPOINT ["jmeter"]
 CMD ["--?"]
