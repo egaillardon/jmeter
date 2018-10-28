@@ -1,6 +1,6 @@
 FROM openjdk:8u162
 LABEL maintainer="emmanuel.gaillardon@orange.fr"
-ENV JMETER_VERSION 4.0
+ENV JMETER_VERSION 5.0
 ENV JMETER_HOME /opt/apache-jmeter-${JMETER_VERSION}
 ENV JMETER_BIN ${JMETER_HOME}/bin
 ENV PATH ${JMETER_BIN}:$PATH

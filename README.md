@@ -23,7 +23,8 @@
 
 ### Supported tags and respective `Dockerfile` links
 
-* `latest`, `4.0.0-1.1.0` [(Dockerfile-standalone)](https://github.com/egaillardon/jmeter/blob/4.0.0-1.1.0/Dockerfile-standalone)
+* `latest`, `5.0.0-1.0.0` [(Dockerfile-standalone)](https://github.com/egaillardon/jmeter/blob/5.0.0-1.0.0/Dockerfile-standalone)
+* `4.0.0-1.1.0` [(Dockerfile-standalone)](https://github.com/egaillardon/jmeter/blob/4.0.0-1.1.0/Dockerfile-standalone)
 * `4.0.0-1.0.0` [(Dockerfile-standalone)](https://github.com/egaillardon/jmeter/blob/4.0.0-1.0.0/Dockerfile-standalone)
 
 ## Quick reference
@@ -282,5 +283,7 @@ docker run --detach --publish 1099:1099 --env TZ=Europe/Paris --rm egaillardon/j
 ```
 
 ## Changelog
+* 5.0.0-1.0.0 :
+   * JMeter 5.0 r1840935
 * 4.0.0-1.1.0 :
    * Set the user `jmeter` when running the image
