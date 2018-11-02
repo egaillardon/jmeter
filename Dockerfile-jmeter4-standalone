@@ -10,8 +10,8 @@ RUN apt-get update && apt-get install -y \
     tcpdump  \
  && rm -rf /var/lib/apt/lists/*
 RUN cd /tmp/ \
- && curl --location --silent --show-error --output apache-jmeter-${JMETER_VERSION}.tgz http://www-eu.apache.org/dist//jmeter/binaries/apache-jmeter-${JMETER_VERSION}.tgz \
- && curl --location --silent --show-error --output apache-jmeter-${JMETER_VERSION}.tgz.sha512 https://www.apache.org/dist/jmeter/binaries/apache-jmeter-${JMETER_VERSION}.tgz.sha512 \
+ && curl --location --silent --show-error --output apache-jmeter-${JMETER_VERSION}.tgz https://archive.apache.org/dist/jmeter/binaries/apache-jmeter-${JMETER_VERSION}.tgz \
+ && curl --location --silent --show-error --output apache-jmeter-${JMETER_VERSION}.tgz.sha512 https://archive.apache.org/dist/jmeter/binaries/apache-jmeter-${JMETER_VERSION}.tgz.sha512 \
  && sha512sum --quiet --check apache-jmeter-${JMETER_VERSION}.tgz.sha512 \
  && tar --extract --gunzip --file=apache-jmeter-${JMETER_VERSION}.tgz --directory=/opt \
  && rm --recursive --force apache* \

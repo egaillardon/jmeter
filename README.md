@@ -290,13 +290,13 @@ docker run --detach --publish 1099:1099 --env TZ=Europe/Paris --rm egaillardon/j
 ## Changelog
 * Apache JMeter 5.0
   * 5.0.0-1.1.0 :
-     * Create jmeter's home directory and set STOPSIGNAL to SIGKILL
+     * Create jmeter's home directory, set STOPSIGNAL to SIGKILL and update links to download tgz and tgz.sha512 files
   * 5.0.0-1.0.0 :
     * JMeter 5.0 r1840935
 
 
 * Apache JMeter 4.0
   * 4.0.0-1.2.0 :
-     * Create jmeter's home directory and set STOPSIGNAL to SIGKILL
+     * Create jmeter's home directory, set STOPSIGNAL to SIGKILL and update links to download tgz and tgz.sha512 files
   * 4.0.0-1.1.0 :
     * Set the user `jmeter` when running the image
