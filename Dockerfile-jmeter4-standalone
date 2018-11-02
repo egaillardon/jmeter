@@ -1,6 +1,7 @@
 FROM openjdk:8u162
 LABEL maintainer="emmanuel.gaillardon@orange.fr"
-ENV JMETER_VERSION 5.0
+STOPSIGNAL SIGKILL
+ENV JMETER_VERSION 4.0
 ENV JMETER_HOME /opt/apache-jmeter-${JMETER_VERSION}
 ENV JMETER_BIN ${JMETER_HOME}/bin
 ENV PATH ${JMETER_BIN}:$PATH
@@ -19,7 +20,7 @@ RUN cd /tmp/ \
  && jmeter --version \
  && rm -fr /tmp/*  \
  && groupadd --system jmeter  \
- && useradd --no-log-init --system --gid jmeter jmeter \
+ && useradd --no-log-init --create-home --system --gid jmeter jmeter \
  && mkdir /jmeter  \
  && chown jmeter:jmeter /jmeter
 USER jmeter

@@ -22,10 +22,15 @@
 *** For a Docker image including JMeter plugins, see https://hub.docker.com/r/egaillardon/jmeter-plugins/ ***
 
 ### Supported tags and respective `Dockerfile` links
+* Apache JMeter 5.0 (see changelog below)
+  * `latest`, `5.0.0-1.1.0` [(Dockerfile-standalone)](https://github.com/egaillardon/jmeter/blob/5.0.0-1.1.0/Dockerfile-standalone)
+  * `5.0.0-1.0.0` [(Dockerfile-standalone)](https://github.com/egaillardon/jmeter/blob/5.0.0-1.0.0/Dockerfile-standalone)
 
-* `latest`, `5.0.0-1.0.0` [(Dockerfile-standalone)](https://github.com/egaillardon/jmeter/blob/5.0.0-1.0.0/Dockerfile-standalone)
-* `4.0.0-1.1.0` [(Dockerfile-standalone)](https://github.com/egaillardon/jmeter/blob/4.0.0-1.1.0/Dockerfile-standalone)
-* `4.0.0-1.0.0` [(Dockerfile-standalone)](https://github.com/egaillardon/jmeter/blob/4.0.0-1.0.0/Dockerfile-standalone)
+
+* Apache JMeter 4.0 (see changelog below)
+  * `4.0.0-1.2.0` [(Dockerfile-standalone)](https://github.com/egaillardon/jmeter/blob/4.0.0-1.2.0/Dockerfile-standalone)
+  * `4.0.0-1.1.0` [(Dockerfile-standalone)](https://github.com/egaillardon/jmeter/blob/4.0.0-1.1.0/Dockerfile-standalone)
+  * `4.0.0-1.0.0` [(Dockerfile-standalone)](https://github.com/egaillardon/jmeter/blob/4.0.0-1.0.0/Dockerfile-standalone)
 
 ## Quick reference
 
@@ -283,7 +288,15 @@ docker run --detach --publish 1099:1099 --env TZ=Europe/Paris --rm egaillardon/j
 ```
 
 ## Changelog
-* 5.0.0-1.0.0 :
-   * JMeter 5.0 r1840935
-* 4.0.0-1.1.0 :
-   * Set the user `jmeter` when running the image
+* Apache JMeter 5.0
+  * 5.0.0-1.1.0 :
+     * Create jmeter's home directory and set STOPSIGNAL to SIGKILL
+  * 5.0.0-1.0.0 :
+    * JMeter 5.0 r1840935
+
+
+* Apache JMeter 4.0
+  * 4.0.0-1.2.0 :
+     * Create jmeter's home directory and set STOPSIGNAL to SIGKILL
+  * 4.0.0-1.1.0 :
+    * Set the user `jmeter` when running the image

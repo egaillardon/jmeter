@@ -1,0 +1,29 @@
+FROM openjdk:8u162
+LABEL maintainer="emmanuel.gaillardon@orange.fr"
+STOPSIGNAL SIGKILL
+ENV JMETER_VERSION 5.0
+ENV JMETER_HOME /opt/apache-jmeter-${JMETER_VERSION}
+ENV JMETER_BIN ${JMETER_HOME}/bin
+ENV PATH ${JMETER_BIN}:$PATH
+RUN apt-get update && apt-get install -y \
+    net-tools \
+    tcpdump  \
+ && rm -rf /var/lib/apt/lists/*
+RUN cd /tmp/ \
+ && curl --location --silent --show-error --output apache-jmeter-${JMETER_VERSION}.tgz http://www-eu.apache.org/dist//jmeter/binaries/apache-jmeter-${JMETER_VERSION}.tgz \
+ && curl --location --silent --show-error --output apache-jmeter-${JMETER_VERSION}.tgz.sha512 https://www.apache.org/dist/jmeter/binaries/apache-jmeter-${JMETER_VERSION}.tgz.sha512 \
+ && sha512sum --quiet --check apache-jmeter-${JMETER_VERSION}.tgz.sha512 \
+ && tar --extract --gunzip --file=apache-jmeter-${JMETER_VERSION}.tgz --directory=/opt \
+ && rm --recursive --force apache* \
+ && sed -i '/RUN_IN_DOCKER/s/^# //g' ${JMETER_BIN}/jmeter \
+ && sed -i '/PrintGCDetails/s/^# /: "${/g' ${JMETER_BIN}/jmeter && sed -i '/PrintGCDetails/s/$/}"/g' ${JMETER_BIN}/jmeter \
+ && jmeter --version \
+ && rm -fr /tmp/*  \
+ && groupadd --system jmeter  \
+ && useradd --no-log-init --create-home --system --gid jmeter jmeter \
+ && mkdir /jmeter  \
+ && chown jmeter:jmeter /jmeter
+USER jmeter
+WORKDIR /jmeter
+ENTRYPOINT ["jmeter"]
+CMD ["--?"]
