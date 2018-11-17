@@ -5,11 +5,14 @@ ENV JMETER_VERSION 5.0
 ENV JMETER_HOME /opt/apache-jmeter-${JMETER_VERSION}
 ENV JMETER_BIN ${JMETER_HOME}/bin
 ENV PATH ${JMETER_BIN}:$PATH
-RUN apt-get update && apt-get install -y \
+COPY entrypoint.sh /usr/local/bin/
+RUN chmod +x /usr/local/bin/entrypoint.sh \
+ && apt-get update && apt-get install -y \
+    gosu \
     net-tools \
     tcpdump  \
- && rm -rf /var/lib/apt/lists/*
-RUN cd /tmp/ \
+ && rm -rf /var/lib/apt/lists/*  \
+ && cd /tmp/ \
  && curl --location --silent --show-error --output apache-jmeter-${JMETER_VERSION}.tgz https://archive.apache.org/dist/jmeter/binaries/apache-jmeter-${JMETER_VERSION}.tgz \
  && curl --location --silent --show-error --output apache-jmeter-${JMETER_VERSION}.tgz.sha512 https://archive.apache.org/dist/jmeter/binaries/apache-jmeter-${JMETER_VERSION}.tgz.sha512 \
  && sha512sum --quiet --check apache-jmeter-${JMETER_VERSION}.tgz.sha512 \
@@ -18,12 +21,7 @@ RUN cd /tmp/ \
  && sed -i '/RUN_IN_DOCKER/s/^# //g' ${JMETER_BIN}/jmeter \
  && sed -i '/PrintGCDetails/s/^# /: "${/g' ${JMETER_BIN}/jmeter && sed -i '/PrintGCDetails/s/$/}"/g' ${JMETER_BIN}/jmeter \
  && jmeter --version \
- && rm -fr /tmp/*  \
- && groupadd --system jmeter  \
- && useradd --no-log-init --create-home --system --gid jmeter jmeter \
- && mkdir /jmeter  \
- && chown jmeter:jmeter /jmeter
-USER jmeter
+ && rm -fr /tmp/*
 WORKDIR /jmeter
-ENTRYPOINT ["jmeter"]
+ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
 CMD ["--?"]

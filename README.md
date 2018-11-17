@@ -23,11 +23,13 @@
 
 ### Supported tags and respective `Dockerfile` links
 * Apache JMeter 5.0 (see changelog below)
-  * `latest`, `5.0.0-1.1.0` [(Dockerfile-standalone)](https://github.com/egaillardon/jmeter/blob/5.0.0-1.1.0/Dockerfile-standalone)
+  * `latest`, `5.0.0-1.2.0` [(Dockerfile-standalone)](https://github.com/egaillardon/jmeter/blob/5.0.0-1.2.0/Dockerfile-standalone)
+  * `5.0.0-1.1.0` [(Dockerfile-standalone)](https://github.com/egaillardon/jmeter/blob/5.0.0-1.1.0/Dockerfile-standalone)
   * `5.0.0-1.0.0` [(Dockerfile-standalone)](https://github.com/egaillardon/jmeter/blob/5.0.0-1.0.0/Dockerfile-standalone)
 
 
 * Apache JMeter 4.0 (see changelog below)
+  * `4.0.0-1.3.0` [(Dockerfile-standalone)](https://github.com/egaillardon/jmeter/blob/4.0.0-1.3.0/Dockerfile-standalone)
   * `4.0.0-1.2.0` [(Dockerfile-standalone)](https://github.com/egaillardon/jmeter/blob/4.0.0-1.2.0/Dockerfile-standalone)
   * `4.0.0-1.1.0` [(Dockerfile-standalone)](https://github.com/egaillardon/jmeter/blob/4.0.0-1.1.0/Dockerfile-standalone)
   * `4.0.0-1.0.0` [(Dockerfile-standalone)](https://github.com/egaillardon/jmeter/blob/4.0.0-1.0.0/Dockerfile-standalone)
@@ -64,6 +66,8 @@ The default user is `jmeter`.
 | `JMETER_LANGUAGE` | Java runtime options to specify used language                          | `"-Duser.language=en -Duser.region=EN"`                                            |
 | `JMETER_OPTS`     | Java runtime options used when JMeter is started                       | `""`                                                                               |
 | `JVM_ARGS`        | Optional java args, e.g. -Dprop=val                                    | `""`                                                                               |
+| `JMETER_GROUP_ID` | Set the jmeter user's group id inside the container | `1000` |
+| `JMETER_USER_ID`  | Set the jmeter user's id inside the container | `1000` |
 
 
 ### Running clients and servers
@@ -287,8 +291,16 @@ ipconfig getifaddr en0
 docker run --detach --publish 1099:1099 --env TZ=Europe/Paris --rm egaillardon/jmeter
 ```
 
+#### Assigning the local user's id and group to the jmeter user inside the container
+
+```
+docker run --env JMETER_GROUP_ID=`/usr/bin/id -g` --env JMETER_USER_ID=`/usr/bin/id -u` --rm egaillardon/jmeter --server -Jserver.rmi.ssl.disable=true
+```
+
 ## Changelog
 * Apache JMeter 5.0
+  * 5.0.0-1.2.0 :
+     * The jmeter user's id and its group id can be changed inside the container in order to avoid issue when mounting local volumes.
   * 5.0.0-1.1.0 :
      * Create jmeter's home directory, set STOPSIGNAL to SIGKILL and update links to download tgz and tgz.sha512 files
   * 5.0.0-1.0.0 :
@@ -296,6 +308,8 @@ docker run --detach --publish 1099:1099 --env TZ=Europe/Paris --rm egaillardon/j
 
 
 * Apache JMeter 4.0
+  * 4.0.0-1.3.0 :
+     * The jmeter user's id and its group id can be changed inside the container in order to avoid issue when mounting local volumes.
   * 4.0.0-1.2.0 :
      * Create jmeter's home directory, set STOPSIGNAL to SIGKILL and update links to download tgz and tgz.sha512 files
   * 4.0.0-1.1.0 :
