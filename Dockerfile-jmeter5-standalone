@@ -1,4 +1,4 @@
-FROM openjdk:8u162
+FROM openjdk:8u181-jdk-alpine3.8
 LABEL maintainer="emmanuel.gaillardon@orange.fr"
 STOPSIGNAL SIGKILL
 ENV JMETER_VERSION 5.0
@@ -7,17 +7,19 @@ ENV JMETER_BIN ${JMETER_HOME}/bin
 ENV PATH ${JMETER_BIN}:$PATH
 COPY entrypoint.sh /usr/local/bin/
 RUN chmod +x /usr/local/bin/entrypoint.sh \
- && apt-get update && apt-get install -y \
-    gosu \
+ && apk add --no-cache \
+    curl \
     net-tools \
+    shadow \
+    su-exec \
     tcpdump  \
- && rm -rf /var/lib/apt/lists/*  \
  && cd /tmp/ \
  && curl --location --silent --show-error --output apache-jmeter-${JMETER_VERSION}.tgz https://archive.apache.org/dist/jmeter/binaries/apache-jmeter-${JMETER_VERSION}.tgz \
  && curl --location --silent --show-error --output apache-jmeter-${JMETER_VERSION}.tgz.sha512 https://archive.apache.org/dist/jmeter/binaries/apache-jmeter-${JMETER_VERSION}.tgz.sha512 \
- && sha512sum --quiet --check apache-jmeter-${JMETER_VERSION}.tgz.sha512 \
- && tar --extract --gunzip --file=apache-jmeter-${JMETER_VERSION}.tgz --directory=/opt \
- && rm --recursive --force apache* \
+ && sha512sum -c apache-jmeter-${JMETER_VERSION}.tgz.sha512 \
+ && mkdir -p /opt/ \
+ && tar x -z -f apache-jmeter-${JMETER_VERSION}.tgz -C /opt \
+ && rm -R -f apache* \
  && sed -i '/RUN_IN_DOCKER/s/^# //g' ${JMETER_BIN}/jmeter \
  && sed -i '/PrintGCDetails/s/^# /: "${/g' ${JMETER_BIN}/jmeter && sed -i '/PrintGCDetails/s/$/}"/g' ${JMETER_BIN}/jmeter \
  && jmeter --version \
