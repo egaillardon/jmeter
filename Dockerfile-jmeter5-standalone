@@ -26,4 +26,4 @@ RUN chmod +x /usr/local/bin/entrypoint.sh \
  && rm -fr /tmp/*
 WORKDIR /jmeter
 ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
-CMD ["--?"]
+CMD ["jmeter", "--?"]
