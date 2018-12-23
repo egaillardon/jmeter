@@ -22,6 +22,7 @@ RUN chmod +x /usr/local/bin/entrypoint.sh \
  && rm -R -f apache* \
  && sed -i '/RUN_IN_DOCKER/s/^# //g' ${JMETER_BIN}/jmeter \
  && sed -i '/PrintGCDetails/s/^# /: "${/g' ${JMETER_BIN}/jmeter && sed -i '/PrintGCDetails/s/$/}"/g' ${JMETER_BIN}/jmeter \
+ && chmod +x ${JMETER_HOME}/bin/*.sh  \
  && jmeter --version \
  && rm -fr /tmp/*
 WORKDIR /jmeter
