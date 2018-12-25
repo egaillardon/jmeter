@@ -23,7 +23,8 @@
 
 ### Supported tags and respective `Dockerfile` links
 * Apache JMeter 5.0 (see changelog below)
-  * `latest`, `5.0.0-2.1.0` [(Dockerfile-standalone)](https://github.com/egaillardon/jmeter/blob/5.0.0-2.1.0/Dockerfile-jmeter5-standalone)
+  * `latest`, `5.0.0-2.1.1` [(Dockerfile-standalone)](https://github.com/egaillardon/jmeter/blob/5.0.0-2.1.1/Dockerfile-jmeter5-standalone)
+  * `5.0.0-2.1.0` [(Dockerfile-standalone)](https://github.com/egaillardon/jmeter/blob/5.0.0-2.1.0/Dockerfile-jmeter5-standalone)
   * `5.0.0-2.0.0` [(Dockerfile-standalone)](https://github.com/egaillardon/jmeter/blob/5.0.0-2.0.0/Dockerfile-jmeter5-standalone)
   * `5.0.0-1.2.0` [(Dockerfile-standalone)](https://github.com/egaillardon/jmeter/blob/5.0.0-1.2.0/Dockerfile-jmeter5-standalone)
   * `5.0.0-1.1.0` [(Dockerfile-standalone)](https://github.com/egaillardon/jmeter/blob/5.0.0-1.1.0/Dockerfile-jmeter5-standalone)
@@ -31,6 +32,7 @@
 
 
 * Apache JMeter 4.0 (see changelog below)
+  * `4.0.0-2.1.1` [(Dockerfile-standalone)](https://github.com/egaillardon/jmeter/blob/4.0.0-2.1.1/Dockerfile-jmeter4-standalone)
   * `4.0.0-2.1.0` [(Dockerfile-standalone)](https://github.com/egaillardon/jmeter/blob/4.0.0-2.1.0/Dockerfile-jmeter4-standalone)
   * `4.0.0-2.0.0` [(Dockerfile-standalone)](https://github.com/egaillardon/jmeter/blob/4.0.0-2.0.0/Dockerfile-jmeter4-standalone)
   * `4.0.0-1.3.0` [(Dockerfile-standalone)](https://github.com/egaillardon/jmeter/blob/4.0.0-1.3.0/Dockerfile-jmeter4-standalone)
@@ -265,6 +267,8 @@ See [Apache JMeter Remote Testing](http://jmeter.apache.org/usermanual/remote-te
 
 ## Changelog
 * Apache JMeter 5.0
+  * 5.0.0-2.1.1 :
+    * Update entrypoint.sh file.
   * 5.0.0-2.1.0 :
     * Add the ability to launch a command other than `jmeter`.
   * 5.0.0-2.0.0 :
@@ -278,6 +282,8 @@ See [Apache JMeter Remote Testing](http://jmeter.apache.org/usermanual/remote-te
 
 
 * Apache JMeter 4.0
+  * 4.0.0-2.1.1 :
+    * Update entrypoint.sh file.
   * 4.0.0-2.1.0 :
     * Add the ability to launch a command other than `jmeter`.
   * 4.0.0-2.0.0 :
