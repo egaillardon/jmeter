@@ -25,7 +25,7 @@
 
 * `egaillardon/jmeter`
 
-*** For a Docker image including JMeter plugins, see https://hub.docker.com/r/egaillardon/jmeter-plugins/ ***
+***For a Docker image including JMeter plugins, see https://hub.docker.com/r/egaillardon/jmeter-plugins/***
 
 ### Supported tags and respective `Dockerfile` links
 * Apache JMeter 5.0 (see changelog below)
