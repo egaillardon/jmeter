@@ -6,8 +6,13 @@
 [![Docker Pulls](https://img.shields.io/docker/pulls/egaillardon/jmeter.svg?style=plastic)](https://hub.docker.com/r/egaillardon/jmeter/)
 [![Docker Automated build](https://img.shields.io/docker/automated/egaillardon/jmeter.svg?style=plastic)](https://hub.docker.com/r/egaillardon/jmeter/)
 [![Docker Build Status](https://img.shields.io/docker/build/egaillardon/jmeter.svg?style=plastic)](https://hub.docker.com/r/egaillardon/jmeter/)
-[![MicroBadger Size](https://img.shields.io/microbadger/image-size/egaillardon/jmeter.svg?style=plastic)](https://hub.docker.com/r/egaillardon/jmeter/)
-[![MicroBadger Layers](https://img.shields.io/microbadger/layers/egaillardon/jmeter.svg?style=plastic)](https://hub.docker.com/r/egaillardon/jmeter/)
+
+
+[![Github Stars](https://img.shields.io/github/stars/egaillardon/jmeter.svg?style=social)](https://github.com/egaillardon/jmeter)
+[![Github Forks](https://img.shields.io/github/forks/egaillardon/jmeter.svg?style=social)](https://github.com/egaillardon/jmeter)
+
+[![Follow](https://img.shields.io/twitter/follow/gamanu_fr.svg?label=Follow&style=social)](https://twitter.com/gamanu_fr)
+[![Tweet](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://twitter.com/intent/tweet?text=@gamanu_fr - Docker image for Apache JMeter - https://hub.docker.com/r/egaillardon/jmeter : )
 
 * **Apache JMeter** : an application designed to load test functional behavior and measure performance - https://jmeter.apache.org
 
