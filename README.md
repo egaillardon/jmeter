@@ -29,23 +29,29 @@
 ***For a Docker image including JMeter plugins, see https://hub.docker.com/r/egaillardon/jmeter-plugins/***
 
 ### Supported tags and respective `Dockerfile` links
+* Apache JMeter 5.1 (see changelog below)
+  * `latest`, `5.1.0-1.0.0` [(Dockerfile)](https://github.com/egaillardon/jmeter/blob/5.1.0-1.0.0/Dockerfile-jmeter-standalone)
+
+
 * Apache JMeter 5.0 (see changelog below)
-  * `latest`, `5.0.0-2.1.1` [(Dockerfile-standalone)](https://github.com/egaillardon/jmeter/blob/5.0.0-2.1.1/Dockerfile-jmeter5-standalone)
-  * `5.0.0-2.1.0` [(Dockerfile-standalone)](https://github.com/egaillardon/jmeter/blob/5.0.0-2.1.0/Dockerfile-jmeter5-standalone)
-  * `5.0.0-2.0.0` [(Dockerfile-standalone)](https://github.com/egaillardon/jmeter/blob/5.0.0-2.0.0/Dockerfile-jmeter5-standalone)
-  * `5.0.0-1.2.0` [(Dockerfile-standalone)](https://github.com/egaillardon/jmeter/blob/5.0.0-1.2.0/Dockerfile-jmeter5-standalone)
-  * `5.0.0-1.1.0` [(Dockerfile-standalone)](https://github.com/egaillardon/jmeter/blob/5.0.0-1.1.0/Dockerfile-jmeter5-standalone)
-  * `5.0.0-1.0.0` [(Dockerfile-standalone)](https://github.com/egaillardon/jmeter/blob/5.0.0-1.0.0/Dockerfile-jmeter5-standalone)
+  * **No more new 5.0 version (02/20/2019)**
+  * `5.0.0-2.1.1` [(Dockerfile)](https://github.com/egaillardon/jmeter/blob/5.0.0-2.1.1/Dockerfile-jmeter5-standalone)
+  * `5.0.0-2.1.0` [(Dockerfile)](https://github.com/egaillardon/jmeter/blob/5.0.0-2.1.0/Dockerfile-jmeter5-standalone)
+  * `5.0.0-2.0.0` [(Dockerfile)](https://github.com/egaillardon/jmeter/blob/5.0.0-2.0.0/Dockerfile-jmeter5-standalone)
+  * `5.0.0-1.2.0` [(Dockerfile)](https://github.com/egaillardon/jmeter/blob/5.0.0-1.2.0/Dockerfile-jmeter5-standalone)
+  * `5.0.0-1.1.0` [(Dockerfile)](https://github.com/egaillardon/jmeter/blob/5.0.0-1.1.0/Dockerfile-jmeter5-standalone)
+  * `5.0.0-1.0.0` [(Dockerfile)](https://github.com/egaillardon/jmeter/blob/5.0.0-1.0.0/Dockerfile-jmeter5-standalone)
 
 
 * Apache JMeter 4.0 (see changelog below)
-  * `4.0.0-2.1.1` [(Dockerfile-standalone)](https://github.com/egaillardon/jmeter/blob/4.0.0-2.1.1/Dockerfile-jmeter4-standalone)
-  * `4.0.0-2.1.0` [(Dockerfile-standalone)](https://github.com/egaillardon/jmeter/blob/4.0.0-2.1.0/Dockerfile-jmeter4-standalone)
-  * `4.0.0-2.0.0` [(Dockerfile-standalone)](https://github.com/egaillardon/jmeter/blob/4.0.0-2.0.0/Dockerfile-jmeter4-standalone)
-  * `4.0.0-1.3.0` [(Dockerfile-standalone)](https://github.com/egaillardon/jmeter/blob/4.0.0-1.3.0/Dockerfile-jmeter4-standalone)
-  * `4.0.0-1.2.0` [(Dockerfile-standalone)](https://github.com/egaillardon/jmeter/blob/4.0.0-1.2.0/Dockerfile-jmeter4-standalone)
-  * `4.0.0-1.1.0` [(Dockerfile-standalone)](https://github.com/egaillardon/jmeter/blob/4.0.0-1.1.0/Dockerfile-standalone)
-  * `4.0.0-1.0.0` [(Dockerfile-standalone)](https://github.com/egaillardon/jmeter/blob/4.0.0-1.0.0/Dockerfile-standalone)
+  * **No more new 4.0 version (02/20/2019)**
+  * `4.0.0-2.1.1` [(Dockerfile)](https://github.com/egaillardon/jmeter/blob/4.0.0-2.1.1/Dockerfile-jmeter4-standalone)
+  * `4.0.0-2.1.0` [(Dockerfile)](https://github.com/egaillardon/jmeter/blob/4.0.0-2.1.0/Dockerfile-jmeter4-standalone)
+  * `4.0.0-2.0.0` [(Dockerfile)](https://github.com/egaillardon/jmeter/blob/4.0.0-2.0.0/Dockerfile-jmeter4-standalone)
+  * `4.0.0-1.3.0` [(Dockerfile)](https://github.com/egaillardon/jmeter/blob/4.0.0-1.3.0/Dockerfile-jmeter4-standalone)
+  * `4.0.0-1.2.0` [(Dockerfile)](https://github.com/egaillardon/jmeter/blob/4.0.0-1.2.0/Dockerfile-jmeter4-standalone)
+  * `4.0.0-1.1.0` [(Dockerfile)](https://github.com/egaillardon/jmeter/blob/4.0.0-1.1.0/Dockerfile-standalone)
+  * `4.0.0-1.0.0` [(Dockerfile)](https://github.com/egaillardon/jmeter/blob/4.0.0-1.0.0/Dockerfile-standalone)
 
 ## Quick reference
 
@@ -174,6 +180,8 @@ The default user is `jmeter`.
   run JMeter in nongui mode
 -s, --server
   run the JMeter server
+-E, --proxyScheme <argument>
+  Set a proxy scheme to use for the proxy server
 -H, --proxyHost <argument>
   Set a proxy server for JMeter to use
 -P, --proxyPort <argument>
@@ -195,7 +203,8 @@ The default user is `jmeter`.
 -S, --systemPropertyFile <argument>
   additional system property file(s)
 -f, --forceDeleteResultFile
-  force delete existing results files before start the test
+  force delete existing results files and web report folder if
+   present before starting the test
 -L, --loglevel <argument>=<value>
   [category=]level e.g. jorphan=INFO, jmeter.util=DEBUG or com
   .example.foo=WARN
@@ -273,6 +282,12 @@ See [Apache JMeter Remote Testing](http://jmeter.apache.org/usermanual/remote-te
 `docker run --env JMETER_GROUP_ID=`/usr/bin/id -g` --env JMETER_USER_ID=`/usr/bin/id -u` --rm egaillardon/jmeter --server -Jserver.rmi.ssl.disable=true`
 
 ## Changelog
+* Apache JMeter 5.1
+  * 5.1.0-1.0.0 :
+    * Base image openjdk:8u191-jdk-alpine3.9 : https://hub.docker.com/_/openjdk
+    * JMeter 5.1 r1853635
+
+
 * Apache JMeter 5.0
   * 5.0.0-2.1.1 :
     * Update entrypoint.sh file.

@@ -1,7 +1,7 @@
-FROM openjdk:8u181-jdk-alpine3.8
+FROM openjdk:8u191-jdk-alpine3.9
 LABEL maintainer="emmanuel.gaillardon@orange.fr"
 STOPSIGNAL SIGKILL
-ENV JMETER_VERSION 4.0
+ENV JMETER_VERSION 5.1
 ENV JMETER_HOME /opt/apache-jmeter-${JMETER_VERSION}
 ENV JMETER_BIN ${JMETER_HOME}/bin
 ENV PATH ${JMETER_BIN}:$PATH
@@ -22,9 +22,9 @@ RUN chmod +x /usr/local/bin/entrypoint.sh \
  && rm -R -f apache* \
  && sed -i '/RUN_IN_DOCKER/s/^# //g' ${JMETER_BIN}/jmeter \
  && sed -i '/PrintGCDetails/s/^# /: "${/g' ${JMETER_BIN}/jmeter && sed -i '/PrintGCDetails/s/$/}"/g' ${JMETER_BIN}/jmeter \
- && chmod +x ${JMETER_HOME}/bin/*.sh  \
+ && chmod +x ${JMETER_HOME}/bin/*.sh \
  && jmeter --version \
  && rm -fr /tmp/*
 WORKDIR /jmeter
 ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
-CMD ["--?"]
+CMD ["jmeter", "--?"]
