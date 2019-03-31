@@ -1,7 +1,7 @@
-FROM openjdk:8u191-jdk-alpine3.9
+FROM openjdk:8u201-jdk-alpine3.9
 LABEL maintainer="emmanuel.gaillardon@orange.fr"
 STOPSIGNAL SIGKILL
-ENV JMETER_VERSION 5.1
+ENV JMETER_VERSION 5.1.1
 ENV JMETER_HOME /opt/apache-jmeter-${JMETER_VERSION}
 ENV JMETER_BIN ${JMETER_HOME}/bin
 ENV PATH ${JMETER_BIN}:$PATH

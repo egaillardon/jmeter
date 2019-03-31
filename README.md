@@ -11,8 +11,8 @@
 [![Github Stars](https://img.shields.io/github/stars/egaillardon/jmeter.svg?style=social)](https://github.com/egaillardon/jmeter)
 [![Github Forks](https://img.shields.io/github/forks/egaillardon/jmeter.svg?style=social)](https://github.com/egaillardon/jmeter)
 
-[![Follow](https://img.shields.io/twitter/follow/gamanu_fr.svg?label=Follow&style=social)](https://twitter.com/gamanu_fr)
-[![Tweet](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://twitter.com/intent/tweet?text=%40gamanu_fr%20-%20Docker%20image%20for%20Apache%20JMeter%20-%20https%3A%2F%2Fhub.docker.com%2Fr%2Fegaillardon%2Fjmeter%20%3A)
+[![Follow](https://img.shields.io/twitter/follow/egaillardon_org.svg?label=Follow&style=social)](https://twitter.com/egaillardon_org)
+[![Tweet](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://twitter.com/intent/tweet?text=%40egaillardon_org%20-%20Docker%20image%20for%20Apache%20JMeter%20-%20https%3A%2F%2Fhub.docker.com%2Fr%2Fegaillardon%2Fjmeter%20%3A)
 
 
 * **Apache JMeter** : an application designed to load test functional behavior and measure performance - https://jmeter.apache.org
@@ -29,8 +29,13 @@
 ***For a Docker image including JMeter plugins, see https://hub.docker.com/r/egaillardon/jmeter-plugins/***
 
 ### Supported tags and respective `Dockerfile` links
+
+* Apache JMeter 5.1.1 (see changelog below)
+  * `latest`, `5.1.1-1.0.0` [(Dockerfile)](https://github.com/egaillardon/jmeter/blob/5.1.1-1.0.0/Dockerfile)
+
+
 * Apache JMeter 5.1 (see changelog below)
-  * `latest`, `5.1.0-1.0.0` [(Dockerfile)](https://github.com/egaillardon/jmeter/blob/5.1.0-1.0.0/Dockerfile-jmeter-standalone)
+  * `5.1.0-1.0.0` [(Dockerfile)](https://github.com/egaillardon/jmeter/blob/5.1.0-1.0.0/Dockerfile-jmeter-standalone)
 
 
 * Apache JMeter 5.0 (see changelog below)
@@ -282,6 +287,13 @@ See [Apache JMeter Remote Testing](http://jmeter.apache.org/usermanual/remote-te
 `docker run --env JMETER_GROUP_ID=`/usr/bin/id -g` --env JMETER_USER_ID=`/usr/bin/id -u` --rm egaillardon/jmeter --server -Jserver.rmi.ssl.disable=true`
 
 ## Changelog
+
+* Apache JMeter 5.1.1
+  * 5.1.1-1.0.0 :
+    * Base image openjdk:8u201-jdk-alpine3.9 : https://hub.docker.com/_/openjdk
+    * JMeter 5.1.1 r1855137
+
+
 * Apache JMeter 5.1
   * 5.1.0-1.0.0 :
     * Base image openjdk:8u191-jdk-alpine3.9 : https://hub.docker.com/_/openjdk
