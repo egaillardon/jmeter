@@ -8,6 +8,7 @@ ENV PATH ${JMETER_BIN}:$PATH
 COPY entrypoint.sh /usr/local/bin/
 RUN chmod +x /usr/local/bin/entrypoint.sh \
  && apk add --no-cache \
+    fontconfig ttf-dejavu \
     curl \
     net-tools \
     shadow \
