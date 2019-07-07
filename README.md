@@ -31,7 +31,8 @@
 ### Supported tags and respective `Dockerfile` links
 
 * Apache JMeter 5.1.1 (see changelog below)
-  * `latest`, `5.1.1-1.0.0` [(Dockerfile)](https://github.com/egaillardon/jmeter/blob/5.1.1-1.0.0/Dockerfile)
+  * `latest`, `5.1.1-1.1.0` [(Dockerfile)](https://github.com/egaillardon/jmeter/blob/5.1.1-1.1.0/Dockerfile)
+  * `5.1.1-1.0.0` [(Dockerfile)](https://github.com/egaillardon/jmeter/blob/5.1.1-1.0.0/Dockerfile)
 
 
 * Apache JMeter 5.1 (see changelog below)
@@ -100,11 +101,11 @@ The default user is `jmeter`.
 
 ###### Runner an interactive dockerized client in non-GUI mode
 
-`docker run --interactive --tty --rm --volume `pwd`:/jmeter egaillardon/jmeter --nongui --testfile test.jmx --logfile result.jtl`
+``docker run --interactive --tty --rm --volume `pwd`:/jmeter egaillardon/jmeter --nongui --testfile test.jmx --logfile result.jtl``
 
 ###### Runner a detached dockerized client in non-GUI mode
 
-`docker run --detach --rm --volume `pwd`:/jmeter egaillardon/jmeter --nongui --testfile test.jmx --logfile result.jtl`
+``docker run --detach --rm --volume `pwd`:/jmeter egaillardon/jmeter --nongui --testfile test.jmx --logfile result.jtl``
 
 #### Running servers
 
@@ -122,7 +123,7 @@ The default user is `jmeter`.
 
 * with docker
 
-`docker run --detach --rm --volume `pwd`:/jmeter egaillardon/jmeter -Jserver.rmi.ssl.disable=true --nongui --testfile test.jmx --remotestart 192.168.1.1 --logfile result.jtl`
+``docker run --detach --rm --volume `pwd`:/jmeter egaillardon/jmeter -Jserver.rmi.ssl.disable=true --nongui --testfile test.jmx --remotestart 192.168.1.1 --logfile result.jtl``
 
 
 * without docker
@@ -133,7 +134,7 @@ The default user is `jmeter`.
 
 * with docker
 
-`docker run --detach --rm --volume `pwd`:/jmeter egaillardon/jmeter -Jserver.rmi.ssl.disable=true --nongui --testfile test.jmx --remotestart 192.168.1.1:1098 --logfile result.jtl`
+``docker run --detach --rm --volume `pwd`:/jmeter egaillardon/jmeter -Jserver.rmi.ssl.disable=true --nongui --testfile test.jmx --remotestart 192.168.1.1:1098 --logfile result.jtl``
 
 * without docker
 
@@ -143,7 +144,7 @@ The default user is `jmeter`.
 
 * with docker
 
-`docker run --detach --rm --volume `pwd`:/jmeter egaillardon/jmeter -Jserver.rmi.ssl.disable=true --nongui --testfile test.jmx --remotestart 192.168.1.1:1098,192.168.1.1:1099 --logfile result.jtl`
+``docker run --detach --rm --volume `pwd`:/jmeter egaillardon/jmeter -Jserver.rmi.ssl.disable=true --nongui --testfile test.jmx --remotestart 192.168.1.1:1098,192.168.1.1:1099 --logfile result.jtl``
 
 * without docker
 
@@ -151,7 +152,7 @@ The default user is `jmeter`.
 
 #### An example that generates a report at the end of the run
 
-`docker run --detach --rm --volume `pwd`:/jmeter egaillardon/jmeter -Jserver.rmi.ssl.disable=true --nongui --testfile test.jmx --remotestart 192.168.1.1:1098,192.168.1.1:1099 --logfile result.jtl --forceDeleteResultFile --reportatendofloadtests --reportoutputfolder report -Jjmeter.reportgenerator.overall_granularity=10000`
+``docker run --detach --rm --volume `pwd`:/jmeter egaillardon/jmeter -Jserver.rmi.ssl.disable=true --nongui --testfile test.jmx --remotestart 192.168.1.1:1098,192.168.1.1:1099 --logfile result.jtl --forceDeleteResultFile --reportatendofloadtests --reportoutputfolder report -Jjmeter.reportgenerator.overall_granularity=10000``
 
 ### Full list of command-line options
 
@@ -249,12 +250,12 @@ or
 
 Set the JMeter property `client.rmi.localport` (useful when there is a firewall between the client and servers).
 
-`docker run --detach --rm --volume `pwd`:/jmeter egaillardon/jmeter -Jserver.rmi.ssl.disable=true -Jclient.rmi.localport=2500 --nongui --testfile test.jmx  --remotestart 192.168.1.15:1098,192.168.1.15:1099 --logfile result.jtl`
+``docker run --detach --rm --volume `pwd`:/jmeter egaillardon/jmeter -Jserver.rmi.ssl.disable=true -Jclient.rmi.localport=2500 --nongui --testfile test.jmx  --remotestart 192.168.1.15:1098,192.168.1.15:1099 --logfile result.jtl``
 
 #### Sending the content of the jmeter log file to console
 Set the `jmeterlogconf` option in order to use another [log4j2.xml file (see the example file provided)](https://github.com/egaillardon/jmeter/blob/master/log4j2.xml)
 
-`docker run --detach --publish 1099:1099 --volume `pwd`:/jmeter --rm egaillardon/jmeter -Jserver.rmi.ssl.disable=true -Djava.rmi.server.hostname=192.168.1.15 -Jserver.rmi.localport=1099 -Dserver_port=1099 --server --jmeterlogconf log4j2.xml`
+``docker run --detach --publish 1099:1099 --volume `pwd`:/jmeter --rm egaillardon/jmeter -Jserver.rmi.ssl.disable=true -Djava.rmi.server.hostname=192.168.1.15 -Jserver.rmi.localport=1099 -Dserver_port=1099 --server --jmeterlogconf log4j2.xml``
 
 #### Running a client in GUI mode, with SSL for RMI disabled, to connect to remote servers
 
@@ -289,6 +290,10 @@ See [Apache JMeter Remote Testing](http://jmeter.apache.org/usermanual/remote-te
 ## Changelog
 
 * Apache JMeter 5.1.1
+  * 5.1.1-1.1.0 :
+     * [Pull request #2](https://github.com/egaillardon/jmeter/pull/2) merged. Thank you, [@ericpeters](https://twitter.com/ericpeters)
+        * Add fontconfig and ttf-dejavu packages to allow running GUI-mode/x11.
+        * Add alpn-boot support for HTTP2 plugin forwarding.
   * 5.1.1-1.0.0 :
     * Base image openjdk:8u201-jdk-alpine3.9 : https://hub.docker.com/_/openjdk
     * JMeter 5.1.1 r1855137
