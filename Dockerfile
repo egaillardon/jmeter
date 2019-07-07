@@ -9,12 +9,13 @@ ENV PATH ${JMETER_BIN}:$PATH
 COPY entrypoint.sh /usr/local/bin/
 RUN chmod +x /usr/local/bin/entrypoint.sh \
  && apk add --no-cache \
-    fontconfig ttf-dejavu \
     curl \
+    fontconfig \
     net-tools \
     shadow \
     su-exec \
     tcpdump  \
+    ttf-dejavu \
  && cd /tmp/ \
  && curl --location --silent --show-error --output apache-jmeter-${JMETER_VERSION}.tgz https://archive.apache.org/dist/jmeter/binaries/apache-jmeter-${JMETER_VERSION}.tgz \
  && curl --location --silent --show-error --output apache-jmeter-${JMETER_VERSION}.tgz.sha512 https://archive.apache.org/dist/jmeter/binaries/apache-jmeter-${JMETER_VERSION}.tgz.sha512 \
@@ -28,10 +29,8 @@ RUN chmod +x /usr/local/bin/entrypoint.sh \
  && jmeter --version \
  && curl --location --silent --show-error --output /opt/alpn-boot-${ALPN_VERSION}.jar http://central.maven.org/maven2/org/mortbay/jetty/alpn/alpn-boot/${ALPN_VERSION}/alpn-boot-${ALPN_VERSION}.jar \
  && rm -fr /tmp/*
-
 # Required for HTTP2 plugins
 ENV JVM_ARGS -Xbootclasspath/p:/opt/alpn-boot-${ALPN_VERSION}.jar
-
 WORKDIR /jmeter
 ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
 CMD ["jmeter", "--?"]
