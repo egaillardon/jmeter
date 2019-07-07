@@ -287,13 +287,30 @@ See [Apache JMeter Remote Testing](http://jmeter.apache.org/usermanual/remote-te
 
 `docker run --env JMETER_GROUP_ID=`/usr/bin/id -g` --env JMETER_USER_ID=`/usr/bin/id -u` --rm egaillardon/jmeter --server -Jserver.rmi.ssl.disable=true`
 
+#### Running JMeter in GUI mode from Docker using X11-forwarding ([Pull request #2](https://github.com/egaillardon/jmeter/pull/2) submitted by [@ericpeters](https://twitter.com/ericpeters))
+
+##### Install Quartz
+  * Install the latest XQuartz X11 server (https://www.xquartz.org/) and run it
+  * Activate the option ‘Allow connections from network clients’ in XQuartz settings
+  * Quit & restart XQuartz (to activate the setting)
+
+##### Run Interactive UI
+
+```bash
+# allow access from localhost
+xhost + 127.0.0.1
+
+docker pull egaillardon/jmeter
+docker run -e DISPLAY=host.docker.internal:0 --interactive --tty --rm egaillardon/jmeter jmeter.sh
+```
+
 ## Changelog
 
 * Apache JMeter 5.1.1
   * 5.1.1-1.1.0 :
      * [Pull request #2](https://github.com/egaillardon/jmeter/pull/2) merged. Thank you, [@ericpeters](https://twitter.com/ericpeters)
-        * Add fontconfig and ttf-dejavu packages to allow running GUI-mode/x11.
-        * Add alpn-boot support for HTTP2 plugin forwarding.
+        * Add fontconfig and ttf-dejavu packages to allow running GUI-mode/x11 forwarding.
+        * Add alpn-boot support for HTTP2 plugin.
      * [Issue #1](https://github.com/egaillardon/jmeter/issues/1) corrected. Thank you, [Philippe M](https://github.com/pmouawad)
   * 5.1.1-1.0.0 :
     * Base image openjdk:8u201-jdk-alpine3.9 : https://hub.docker.com/_/openjdk
