@@ -31,7 +31,8 @@
 ### Supported tags and respective `Dockerfile` links
 
 * Apache JMeter 5.1.1 (see changelog below)
-  * `latest`, `5.1.1-1.1.0` [(Dockerfile)](https://github.com/egaillardon/jmeter/blob/5.1.1-1.1.0/Dockerfile)
+  * `latest`, `5.1.1-2.0.0` [(Dockerfile)](https://github.com/egaillardon/jmeter/blob/5.1.1-2.0.0/Dockerfile)
+  * `5.1.1-1.1.0` [(Dockerfile)](https://github.com/egaillardon/jmeter/blob/5.1.1-1.1.0/Dockerfile)
   * `5.1.1-1.0.0` [(Dockerfile)](https://github.com/egaillardon/jmeter/blob/5.1.1-1.0.0/Dockerfile)
 
 
@@ -305,13 +306,16 @@ docker run -e DISPLAY=host.docker.internal:0 --interactive --tty --rm egaillardo
 ```
 
 ## Changelog
-
+s
 * Apache JMeter 5.1.1
+  * 5.1.1-2.0.0 :
+    * [Issue #4](https://github.com/egaillardon/jmeter/issues/4) closed. Thank you, [Philippe M](https://github.com/pmouawad)
+      * Change the mirror system used to https://www-eu.apache.org/dist/jmeter/binaries/ from https://archive.apache.org/dist/jmeter/binaries
   * 5.1.1-1.1.0 :
-     * [Pull request #2](https://github.com/egaillardon/jmeter/pull/2) merged. Thank you, [@ericpeters](https://twitter.com/ericpeters)
-        * Add fontconfig and ttf-dejavu packages to allow running GUI-mode/x11 forwarding.
-        * Add alpn-boot support for HTTP2 plugin.
-     * [Issue #1](https://github.com/egaillardon/jmeter/issues/1) corrected. Thank you, [Philippe M](https://github.com/pmouawad)
+    * [Pull request #2](https://github.com/egaillardon/jmeter/pull/2) merged. Thank you, [@ericpeters](https://twitter.com/ericpeters)
+      * Add fontconfig and ttf-dejavu packages to allow running GUI-mode/x11 forwarding.
+      * Add alpn-boot support for HTTP2 plugin.
+    * [Issue #1](https://github.com/egaillardon/jmeter/issues/1) corrected. Thank you, [Philippe M](https://github.com/pmouawad)
   * 5.1.1-1.0.0 :
     * Base image openjdk:8u201-jdk-alpine3.9 : https://hub.docker.com/_/openjdk
     * JMeter 5.1.1 r1855137

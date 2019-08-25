@@ -1,6 +1,7 @@
 FROM openjdk:8u201-jdk-alpine3.9
 LABEL maintainer="emmanuel.gaillardon@orange.fr"
 STOPSIGNAL SIGKILL
+ENV MIRROR https://www-eu.apache.org/dist/jmeter/binaries
 ENV JMETER_VERSION 5.1.1
 ENV JMETER_HOME /opt/apache-jmeter-${JMETER_VERSION}
 ENV JMETER_BIN ${JMETER_HOME}/bin
@@ -17,8 +18,8 @@ RUN chmod +x /usr/local/bin/entrypoint.sh \
     tcpdump  \
     ttf-dejavu \
  && cd /tmp/ \
- && curl --location --silent --show-error --output apache-jmeter-${JMETER_VERSION}.tgz https://archive.apache.org/dist/jmeter/binaries/apache-jmeter-${JMETER_VERSION}.tgz \
- && curl --location --silent --show-error --output apache-jmeter-${JMETER_VERSION}.tgz.sha512 https://archive.apache.org/dist/jmeter/binaries/apache-jmeter-${JMETER_VERSION}.tgz.sha512 \
+ && curl --location --silent --show-error --output apache-jmeter-${JMETER_VERSION}.tgz ${MIRROR}/apache-jmeter-${JMETER_VERSION}.tgz \
+ && curl --location --silent --show-error --output apache-jmeter-${JMETER_VERSION}.tgz.sha512 ${MIRROR}/apache-jmeter-${JMETER_VERSION}.tgz.sha512 \
  && sha512sum -c apache-jmeter-${JMETER_VERSION}.tgz.sha512 \
  && mkdir -p /opt/ \
  && tar x -z -f apache-jmeter-${JMETER_VERSION}.tgz -C /opt \
