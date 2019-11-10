@@ -1,8 +1,8 @@
-FROM openjdk:8u201-jdk-alpine3.9
+FROM openjdk:8u212-jdk-alpine3.9
 LABEL maintainer="emmanuel.gaillardon@orange.fr"
 STOPSIGNAL SIGKILL
 ENV MIRROR https://www-eu.apache.org/dist/jmeter/binaries
-ENV JMETER_VERSION 5.1.1
+ENV JMETER_VERSION 5.2
 ENV JMETER_HOME /opt/apache-jmeter-${JMETER_VERSION}
 ENV JMETER_BIN ${JMETER_HOME}/bin
 ENV ALPN_VERSION 8.1.13.v20181017

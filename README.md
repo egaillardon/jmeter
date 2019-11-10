@@ -30,13 +30,19 @@
 
 ### Supported tags and respective `Dockerfile` links
 
+* Apache JMeter 5.2 (see changelog below)
+  * `latest`, `5.2.0-1.0.0` [(Dockerfile)](https://github.com/egaillardon/jmeter/blob/5.2.0-1.0.0/Dockerfile)
+
+
 * Apache JMeter 5.1.1 (see changelog below)
-  * `latest`, `5.1.1-2.0.0` [(Dockerfile)](https://github.com/egaillardon/jmeter/blob/5.1.1-2.0.0/Dockerfile)
+  * **No more new 5.1.1 version (11/10/2019)**
+  * `5.1.1-2.0.0` [(Dockerfile)](https://github.com/egaillardon/jmeter/blob/5.1.1-2.0.0/Dockerfile)
   * `5.1.1-1.1.0` [(Dockerfile)](https://github.com/egaillardon/jmeter/blob/5.1.1-1.1.0/Dockerfile)
   * `5.1.1-1.0.0` [(Dockerfile)](https://github.com/egaillardon/jmeter/blob/5.1.1-1.0.0/Dockerfile)
 
 
 * Apache JMeter 5.1 (see changelog below)
+  * **No more new 5.1 version (11/10/2019)**
   * `5.1.0-1.0.0` [(Dockerfile)](https://github.com/egaillardon/jmeter/blob/5.1.0-1.0.0/Dockerfile-jmeter-standalone)
 
 
@@ -306,7 +312,13 @@ docker run -e DISPLAY=host.docker.internal:0 --interactive --tty --rm egaillardo
 ```
 
 ## Changelog
-s
+
+* Apache JMeter 5.2
+  * 5.2.0-1.0.0 :
+    * Base image openjdk:8u212-jdk-alpine3.9 : https://hub.docker.com/_/openjdk
+    * JMeter 5.2
+
+
 * Apache JMeter 5.1.1
   * 5.1.1-2.0.0 :
     * [Issue #4](https://github.com/egaillardon/jmeter/issues/4) closed. Thank you, [Philippe M](https://github.com/pmouawad)
