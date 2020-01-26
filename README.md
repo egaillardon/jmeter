@@ -35,6 +35,7 @@
 
 
 * Apache JMeter 5.2 (see changelog below)
+  * **No more new 5.2 version (01/26/2019)**
   * `5.2.0-1.0.0` [(Dockerfile)](https://github.com/egaillardon/jmeter/blob/5.2.0-1.0.0/Dockerfile)
 
 
