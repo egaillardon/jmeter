@@ -28,7 +28,7 @@ RUN chmod +x /usr/local/bin/entrypoint.sh \
  && sed -i '/PrintGCDetails/s/^# /: "${/g' ${JMETER_BIN}/jmeter && sed -i '/PrintGCDetails/s/$/}"/g' ${JMETER_BIN}/jmeter \
  && chmod +x ${JMETER_HOME}/bin/*.sh \
  && jmeter --version \
- && curl --location --silent --show-error --output /opt/alpn-boot-${ALPN_VERSION}.jar http://central.maven.org/maven2/org/mortbay/jetty/alpn/alpn-boot/${ALPN_VERSION}/alpn-boot-${ALPN_VERSION}.jar \
+ && curl --location --silent --show-error --output /opt/alpn-boot-${ALPN_VERSION}.jar https://repo1.maven.org/maven2/org/mortbay/jetty/alpn/alpn-boot/${ALPN_VERSION}/alpn-boot-${ALPN_VERSION}.jar \
  && rm -fr /tmp/*
 # Required for HTTP2 plugins
 ENV JVM_ARGS -Xbootclasspath/p:/opt/alpn-boot-${ALPN_VERSION}.jar
