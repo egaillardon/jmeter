@@ -1,8 +1,8 @@
-FROM openjdk:8u212-jdk-alpine3.9
+FROM adoptopenjdk/openjdk8:jdk8u252-b09-alpine
 LABEL maintainer="emmanuel.gaillardon@orange.fr"
 STOPSIGNAL SIGKILL
 ENV MIRROR https://www-eu.apache.org/dist/jmeter/binaries
-ENV JMETER_VERSION 5.2.1
+ENV JMETER_VERSION 5.3
 ENV JMETER_HOME /opt/apache-jmeter-${JMETER_VERSION}
 ENV JMETER_BIN ${JMETER_HOME}/bin
 ENV ALPN_VERSION 8.1.13.v20181017
@@ -12,6 +12,10 @@ RUN chmod +x /usr/local/bin/entrypoint.sh \
  && apk add --no-cache \
     curl \
     fontconfig \
+    libxext \
+    libxi \
+    libxrender \
+    libxtst \
     net-tools \
     shadow \
     su-exec \

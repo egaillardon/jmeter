@@ -30,8 +30,13 @@
 
 ### Supported tags and respective `Dockerfile` links
 
+* Apache JMeter 5.3 (see changelog below)
+  * `latest`, `5.3.0-1.0.0` [(Dockerfile)](https://github.com/egaillardon/jmeter/blob/5.3.0-1.0.0/Dockerfile)
+
+
 * Apache JMeter 5.2.1 (see changelog below)
-  * `latest`, `5.2.1-1.0.0` [(Dockerfile)](https://github.com/egaillardon/jmeter/blob/5.2.1-1.0.0/Dockerfile)
+  * **No more new 5.2.1 version (05/21/2020)**
+  * `5.2.1-1.0.0` [(Dockerfile)](https://github.com/egaillardon/jmeter/blob/5.2.1-1.0.0/Dockerfile)
 
 
 * Apache JMeter 5.2 (see changelog below)
@@ -318,15 +323,21 @@ docker run -e DISPLAY=host.docker.internal:0 --interactive --tty --rm egaillardo
 
 ## Changelog
 
+* Apache JMeter 5.3
+  * 5.3.0-1.0.0 :
+    * Base image [adoptopenjdk/openjdk8:jdk8u252-b09-alpine](https://hub.docker.com/r/adoptopenjdk/openjdk8)
+    * JMeter 5.3
+
+
 * Apache JMeter 5.2.1
   * 5.2.1-1.0.0 :
     * [Pull request #7](https://github.com/egaillardon/jmeter/pull/7) merged. Thank you, [Davi S. Zucon](https://github.com/davizucon)
-      * JMeter 5.2.1
+    * JMeter 5.2.1
 
 
 * Apache JMeter 5.2
   * 5.2.0-1.0.0 :
-    * Base image openjdk:8u212-jdk-alpine3.9 : https://hub.docker.com/_/openjdk
+    * Base image [openjdk:8u212-jdk-alpine3.9](https://hub.docker.com/_/openjdk)
     * JMeter 5.2
 
 
@@ -340,13 +351,13 @@ docker run -e DISPLAY=host.docker.internal:0 --interactive --tty --rm egaillardo
       * Add alpn-boot support for HTTP2 plugin.
     * [Issue #1](https://github.com/egaillardon/jmeter/issues/1) corrected. Thank you, [Philippe M](https://github.com/pmouawad)
   * 5.1.1-1.0.0 :
-    * Base image openjdk:8u201-jdk-alpine3.9 : https://hub.docker.com/_/openjdk
+    * Base image [openjdk:8u201-jdk-alpine3.9](https://hub.docker.com/_/openjdk)
     * JMeter 5.1.1 r1855137
 
 
 * Apache JMeter 5.1
   * 5.1.0-1.0.0 :
-    * Base image openjdk:8u191-jdk-alpine3.9 : https://hub.docker.com/_/openjdk
+    * Base image [openjdk:8u191-jdk-alpine3.9](https://hub.docker.com/_/openjdk)
     * JMeter 5.1 r1853635
 
 
